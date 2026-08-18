@@ -1,0 +1,117 @@
+# ============================================================
+#  LifeShop .gitignore
+# ============================================================
+
+# ------------------------------------------------------------
+# 一、敏感配置（务必忽略，切勿提交真实凭证）
+# ------------------------------------------------------------
+# 真实后端配置：含数据库密码、邮箱授权码、JWT 密钥、OSS AccessKey
+backend/src/main/resources/application.yml
+backend/src/main/resources/application-local.yml
+backend/src/main/resources/application-dev.yml
+backend/src/main/resources/application-prod.yml
+backend/src/main/resources/application-test.yml
+
+# 显式保留配置模板（占位符版本，需要提交）
+!backend/src/main/resources/application-example.yml
+
+# 环境变量与密钥文件
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.jks
+*.keystore
+secrets.*
+
+# 个人开源发布操作手册（私人文档，不公开）
+PUBLISH_CHECKLIST.md
+
+# ------------------------------------------------------------
+# 二、含真实业务数据的数据库导出（仅提交脱敏的 init.sql）
+# ------------------------------------------------------------
+sql/db_life_shop.sql
+sql/*_dump.sql
+sql/*_backup.sql
+sql/backup/
+!sql/init.sql
+
+# ------------------------------------------------------------
+# 三、Java / Maven 构建产物
+# ------------------------------------------------------------
+target/
+build/
+!.mvn/wrapper/maven-wrapper.jar
+*.class
+*.jar
+*.war
+*.ear
+*.log
+hs_err_pid*
+replay_pid*
+
+# ------------------------------------------------------------
+# 四、Node / 前端构建产物
+# ------------------------------------------------------------
+node_modules/
+frontend/dist/
+frontend/dist-ssr/
+.vite/
+*.local
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.pnpm-store/
+
+# ------------------------------------------------------------
+# 五、IDE / 编辑器
+# ------------------------------------------------------------
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+!.vscode/extensions.json
+*.sublime-project
+*.sublime-workspace
+.settings/
+.project
+.classpath
+.factorypath
+nbproject/private/
+
+# ------------------------------------------------------------
+# 六、用户上传文件（运行时产生，不纳入版本管理）
+# 注：此处用 /* 而非 /，否则父目录被整体排除后负向规则(!)会失效，
+#     导致 .gitkeep 无法保留，克隆后缺失 uploads 目录。
+# ------------------------------------------------------------
+backend/uploads/*
+!backend/uploads/.gitkeep
+
+# ------------------------------------------------------------
+# 七、日志与临时文件
+# ------------------------------------------------------------
+logs/
+*.log.*
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+*~
+
+# ------------------------------------------------------------
+# 八、操作系统生成文件
+# ------------------------------------------------------------
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
