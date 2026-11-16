@@ -17,6 +17,7 @@ public class DataMigrationConfig {
     private final BizAfterSaleMapper bizAfterSaleMapper;
     private final JdbcTemplate jdbcTemplate;
 
+    //test01
     @Bean
     public CommandLineRunner fixAfterSaleData() {
         return args -> {
